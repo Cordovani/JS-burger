@@ -1,19 +1,21 @@
 //DICHIARAZIONE FUNZIONI e VARIABILI
 var submitBtn = document.getElementById("button");
+var validCoupon = ["boolean2021","class33","5dollarCheese"];
+var priceField = document.getElementById("price");
 
-// // scandisce la collezione passando un ID  e restituisce 
-// // --- querySelectorAll() restituisce una NodeList 
-// function scanNodeList() {
-//     return document.querySelectorAll(".class");
-// }
+// salvo in una variabile somma 50$ è la base del burger    
+var somma = 50;
 
-// // controlla se in una collezione ci sono elementi checked, passando un ID restituisce un booleano 
-// function isChecked(id) {
-//     return document.getElementById(id).checked;
-// }
+// funzione per la somma se l'elemento è check aggiunge il valore al total 
+function addToSum(total, elementHTML) {
+    if (elementHTML.checked) {
+        total += parseInt(elementHTML.value);
+    }
+    
+    return total;
+}
 
-
-submitBtn.addEventListener("click", function () { }) {
+submitBtn.addEventListener("click", function () {
     var nomeBurgerField = document.getElementById("name");
     // var cheeseField = document.getElementById("cheese");
     // var tomatoFiled = document.getElementById("tomato");
@@ -23,43 +25,42 @@ submitBtn.addEventListener("click", function () { }) {
     var listaIngredienti = document.querySelectorAll(".ingredient [type='checkbox']");
     
     console.log(listaIngredienti);
-    
-    // salvo in una variabile somma 50$ è la base del burger    
-    var somma = 50;
+
 
     // ciclo la lista
-    for (var i = 0; i < listaIngredienti.length(); i++){
+    for (var i = 0; i < listaIngredienti.length; i++) {
         var ingrediente = listaIngredienti[i];
-        
+
+        somma = addToSum(somma, ingrediente);
         // se è selezionato dall'utente
-        if(ingrediente.checked){
-            somma += parseInt(ingrediente.value);
-        }
+        // if (ingrediente.checked) {
+        //     somma += parseInt(ingrediente.value);
+        // }
     }
-    
+
+
+
+    // se il nome del burger non viene inserito stampo un messaggio di errore
     if (!nomeBurgerField.value) {
-            alert("inserire il nome del burger");
-        }
+        alert("inserire il nome del burger");
+    }
 
-}
-
-
-
-//CORPO DEL PROGRAMMA
+    // controllo se viene inserito uno sconto valido
 
 
-// controllo gli ingredienti con il check
+    // inietto il prezzo finale nell'HTML
+    priceField.innerHTML = somma;
 
 
-// controllo che venga inserito il nome del burger
+})
 
 
-// se il nome del burger non viene inserito stampo un messaggio di errore
+// Note
+// post correzione Florian
 
 
-// controllo se viene inserito uno sconto
 
 
-// genero il prezzo 
+
 
 

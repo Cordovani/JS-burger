@@ -2,6 +2,7 @@
 var submitBtn = document.getElementById("button");
 var validCoupon = ["boolean2021","class33","5dollarCheese"];
 var priceField = document.getElementById("price");
+var discount = document.getElementById("coupon");
 
 // salvo in una variabile somma 50$ è la base del burger    
 var somma = 50;
@@ -45,8 +46,10 @@ submitBtn.addEventListener("click", function () {
         alert("inserire il nome del burger");
     }
 
-    // controllo se viene inserito uno sconto valido
-
+    // controllo se viene inserito uno sconto valido e sconta del 30% il totale
+    if(discount) {
+        somma -= somma * 0.2;
+    }
 
     // inietto il prezzo finale nell'HTML
     priceField.innerHTML = somma;
